@@ -62,9 +62,9 @@ class ProductResultSerializer(serializers.ModelSerializer):
     def get_product_materials(self, obj):
         result = []
         quantity = obj.quantity # 30 ta ko'ylak
-
-        for material in obj.materials.all():
-            warehouses = models.Warehouse.objects.filter(material__id=material.id)
+        materials = obj.materials.all().prefetch_related('material__warehouses')
+        for material in materials:
+            warehouses = material.material.warehouses.all()
 
             title = material.material.title
 
