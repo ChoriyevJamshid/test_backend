@@ -35,7 +35,7 @@ class RequestAPI(generics.CreateAPIView):
 
         products = Product.objects.filter(code=code).annotate(
             quantity=Value(quantity)
-        ).prefetch_related('materials', 'materials__material')
+        ).prefetch_related('materials', )
 
         serializer = serializers.ProductResultSerializer(instance=products, many=True)
 
