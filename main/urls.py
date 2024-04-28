@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
     path('', views.ProductAPI.as_view(), name='product_list'),
     path('req/', views.RequestAPI.as_view(), name='request'),
-    path('res/', views.ResultAPI.as_view(), name='response'),
+    path('req2/', views.RequestAPI2.as_view(), name='request2'),
 ]
 
